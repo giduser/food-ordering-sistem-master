@@ -1,3 +1,33 @@
+<?php
+session_start();
+include("connection/connect.php");
+error_reporting(0);
+
+$message = ""; // Inisialisasi variabel $message
+$success = ""; // Inisialisasi variabel $success
+
+if (isset($_POST['submit'])) {
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+
+  if (!empty($_POST["submit"])) {
+    $loginquery = "SELECT * FROM users WHERE username='$username' && password='" . md5($password) . "'";
+    $result = mysqli_query($db, $loginquery);
+    $row = mysqli_fetch_array($result);
+    if (is_array($row)) {
+      $_SESSION["random_id"] = rand();
+      $_SESSION["user_id"] = $row['u_id'];
+      $_SESSION["name"] = $row['f_name'] . " " . $row['l_name']; // Simpan nama pengguna ke session
+      $_SESSION["email"] = $row['email']; // Simpan email pengguna ke session
+      $success = "Login successful! Redirecting to homepage...";
+      header("refresh:1;url=index.php");
+    } else {
+      $message = "Invalid Username or Password!";
+    }
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,32 +41,7 @@
   <link rel="stylesheet" href="css/login.css">
 </head>
 
-<body style="background-image: url('images/login.jpg');  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;">
-  <?php
-  include("connection/connect.php");
-  error_reporting(0);
-  session_start();
-  if (isset($_POST['submit'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    if (!empty($_POST["submit"])) {
-      $loginquery = "SELECT * FROM users WHERE username='$username' && password='" . md5($password) . "'";
-      $result = mysqli_query($db, $loginquery);
-      $row = mysqli_fetch_array($result);
-      if (is_array($row)) {
-        $_SESSION["random_id"] = rand();
-        $_SESSION["user_id"] = $row['u_id'];
-        header("refresh:1;url=index.php");
-      } else {
-        $message = "Invalid Username or Password!";
-      }
-    }
-  }
-  ?>
-
+<body style="background-image: url('images/login.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
   <!-- Form Module-->
   <div class="d-flex justify-content-center form-containerr">
     <div class="col-md-5 border p-5 my-5 bg-white">
@@ -48,12 +53,12 @@
           <form class="form-container" action="" method="post">
             <div class="form-group row">
               <div class="col-sm-10">
-                <input class="form-control" type="text" placeholder="Username" name="username" />
+                <input class="form-control" type="text" placeholder="Username" name="username" required />
               </div>
             </div>
             <div class="form-group row">
               <div class="col-sm-10">
-                <input class="form-control" type="password" placeholder="Password" name="password" />
+                <input class="form-control" type="password" placeholder="Password" name="password" required />
               </div>
             </div>
             <div class="form-group row">
@@ -66,23 +71,13 @@
         <div class="regis">Not registered?<a href="registration.php" style="color:#f30;"> Create an account</a></div>
         <br><br>
         <a href="admin/index.php" class="btn btn-primary btn-sm">Admin Login</a>
-
       </div>
     </div>
-
-
   </div>
-  </div>
-  </div>
-  </div>
-
-
-
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
 </body>
 
 </html>

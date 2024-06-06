@@ -26,6 +26,7 @@ if (empty($_SESSION['user_id'])) {
         <!-- Custom styles for this template -->
         <link href="css/style.css" rel="stylesheet">
         <link href="footer.css" rel="stylesheet">
+
         <style type="text/css" rel="stylesheet">
             .indent-small {
                 margin-left: 5px;
@@ -48,6 +49,10 @@ if (empty($_SESSION['user_id'])) {
                 color: #777;
             }
 
+            .navbar {
+                background-color: darkslategrey;
+                /* Warna hijau */
+            }
 
             table {
                 width: 750px;
@@ -217,7 +222,15 @@ if (empty($_SESSION['user_id'])) {
                                                             ?>
                                                         </td>
                                                         <td data-column="Date"> <?php echo $row['date']; ?></td>
-                                                        <td data-column="Action"> <a href="delete_orders.php?order_del=<?php echo $row['o_id']; ?>" onclick="return confirm('Are you sure you want to cancel your order?');" class="btn btn-danger btn-flat btn-addon btn-xs m-b-10"><i class="fa fa-trash-o" style="font-size:16px"></i></a> </td>
+                                                        <td data-column="Action">
+                                                            <a href="delete_orders.php?order_del=<?php echo $row['o_id']; ?>" onclick="return confirm('Are you sure you want to cancel your order?');" class="btn btn-danger btn-flat btn-addon btn-xs m-b-10">
+                                                                <i class="fa fa-trash-o" style="font-size:16px"></i>
+                                                            </a>
+
+                                                            ?>
+                                                        </td>
+
+
                                                     </tr>
 
 
