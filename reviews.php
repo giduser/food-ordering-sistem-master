@@ -48,129 +48,125 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <title>Review Form</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
-        }
+<?php include('includes/head.php'); ?>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+    }
 
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-        h1 {
-            text-align: center;
-            color: #333;
-        }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
 
-        label {
-            font-weight: bold;
-            color: #555;
-        }
+    label {
+        font-weight: bold;
+        color: #555;
+    }
 
-        input[type="text"],
-        input[type="email"],
-        textarea {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-        }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
 
-        .star-rating {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
+    .star-rating {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
 
-        .star {
-            font-size: 30px;
-            color: #ccc;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
+    .star {
+        font-size: 30px;
+        color: #ccc;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
 
-        .star:hover,
-        .star.selected {
-            color: #FFD700;
-        }
+    .star:hover,
+    .star.selected {
+        color: #FFD700;
+    }
 
-        #review {
-            width: calc(100% - 20px);
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-        }
+    #review {
+        width: calc(100% - 20px);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
 
-        input[type="submit"] {
-            background-color: #FFD700;
-            color: #333;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+    input[type="submit"] {
+        background-color: #FFD700;
+        color: #333;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
 
-        input[type="submit"]:hover {
-            background-color: #F0C800;
-        }
+    input[type="submit"]:hover {
+        background-color: #F0C800;
+    }
 
-        /* CSS untuk reviews */
-        .reviews-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    /* CSS untuk reviews */
+    .reviews-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
 
-        .review {
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            background-color: #f9f9f9;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+    .review {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #f9f9f9;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-        .review .name {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
+    .review .name {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
 
-        .review .rating {
-            margin-bottom: 10px;
-        }
+    .review .rating {
+        margin-bottom: 10px;
+    }
 
-        .review .rating i {
-            color: #FFD700;
-            margin-left: 5px;
-        }
+    .review .rating i {
+        color: #FFD700;
+        margin-left: 5px;
+    }
 
-        .review .comment {
-            line-height: 1.6;
-        }
+    .review .comment {
+        line-height: 1.6;
+    }
 
-        .no-reviews {
-            font-style: italic;
-            color: #999;
-        }
-    </style>
-</head>
+    .no-reviews {
+        font-style: italic;
+        color: #999;
+    }
+</style>
+
 
 <body>
     <div class="container">

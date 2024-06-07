@@ -24,8 +24,8 @@ if (isset($_POST['search'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="#">
-    <title>Angkringan</title>
+    <link rel="icon" href="images/cah bagus-fotor-20240607111022.png" type="image/svg+xml">
+    <title>WR Cah Bagus</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
@@ -62,7 +62,7 @@ if (isset($_POST['search'])) {
                                 <path d="M202.494 386h22c5.799 0 10.5-4.701 10.5-10.5s-4.701-10.5-10.5-10.5h-22c-5.799 0-10.5 4.701-10.5 10.5s4.701 10.5 10.5 10.5z"></path>
                             </g>
                         </svg>
-                        <h4><span>1. </span>Choose Restaurant</h4>
+                        <h4><span>1. </span>Choose Meals</h4>
                     </div>
                     <!-- end:Step -->
                     <div class="step-item step2">

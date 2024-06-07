@@ -10,23 +10,7 @@ include_once 'product-action.php';
 ?>
 
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="#">
-    <title>Restaurant Manu</title>
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/animsition.min.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/footer.css" rel="stylesheet">
-</head>
+<?php include('includes/head.php'); ?>
 
 <body>
 
@@ -41,7 +25,7 @@ include_once 'product-action.php';
             <div class="container">
                 <ul class="row links">
 
-                    <li class="col-xs-12 col-sm-4 link-item"><span>1</span><a href="restaurants.php">Choose Restaurant</a></li>
+                    <li class="col-xs-12 col-sm-4 link-item"><span>1</span><a href="restaurants.php">Choose Meals</a></li>
                     <li class="col-xs-12 col-sm-4 link-item active"><span>2</span><a href="dishes.php?res_id=<?php echo $_GET['res_id']; ?>">Pick Your favorite food</a></li>
                     <li class="col-xs-12 col-sm-4 link-item"><span>3</span><a href="#">Order and Pay online</a></li>
                 </ul>
@@ -61,31 +45,27 @@ include_once 'product-action.php';
                                 <figure><?php echo '<img src="admin/Res_img/' . $rows['image'] . '" alt="Restaurant logo">'; ?></figure>
                             </div>
                         </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 profile-desc">
-                            <div class="pull-left right-text white-txt">
-                                <h6><a href="#"><?php echo $rows['title']; ?></a></h6>
-                                <p><?php echo $rows['address']; ?></p>
-                                <ul class="nav nav-inline">
-                                    <li class="nav-item"> <a class="nav-link active" href="#"><i class="fa fa-check"></i> Min Rp.30000</a> </li>
-                                    <li class="nav-item"> <a class="nav-link" href="#"><i class="fa fa-motorcycle"></i> 30 min</a> </li>
-                                    <li class="nav-item ratings">
-                                        <a class="nav-link" href="#" style="color: yellow;">
-                                            <span>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </span>
-                                        </a>
-                                    </li>
-                                </ul>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 profile-desc">
+                                    <div class="pull-left right-text white-txt">
+                                        <h6><a href="#"><?php echo htmlspecialchars($rows['title']); ?></a></h6>
+                                        <p><?php echo htmlspecialchars($rows['address']); ?></p>
+                                        <ul class="nav nav-inline">
+                                            <li class="nav-item ratings">
+                                                <a class="nav-link" href="#" style="color: yellow;">
+                                                    <div class="rating">
+                                                        <span><?php echo number_format($review_data['avg_rating'], 1); ?></span>
+                                                        <i class="fas fa-star" style="color: yellow;"></i>
+                                                        <span>(<?php echo isset($review_data['total_reviews']) ? $review_data['total_reviews'] : '0'; ?>)</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
         </section>
         <!-- end:Inner page hero -->
         <div class="breadcrumb">
@@ -241,6 +221,18 @@ include_once 'product-action.php';
     <script src="js/jquery.isotope.min.js"></script>
     <script src="js/headroom.js"></script>
     <script src="js/foodpicky.min.js"></script>
+
+    <style>
+        .rating {
+            display: flex;
+            align-items: center;
+        }
+
+        .rating span,
+        .rating i {
+            margin-right: 4px;
+        }
+    </style>
 </body>
 
 </html>

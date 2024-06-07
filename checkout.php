@@ -19,30 +19,17 @@ if (empty($_SESSION["user_id"])) {
 
             mysqli_query($db, $SQL);
 
-            $success = "Thankyou! Your Order Placed successfully!";
+            $success = "Thank you! Your Order Placed successfully!";
+            // Redirect back to index.php after submitting the form
+            header('location:index.php');
+            exit; // Ensure script execution stops here
         }
     }
 ?>
 
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <link rel="icon" href="#">
-        <title>Check Out Page</title>
-        <!-- Bootstrap core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/animsition.min.css" rel="stylesheet">
-        <link href="css/animate.css" rel="stylesheet">
-        <!-- Custom styles for this template -->
-        <link href="css/style.css" rel="stylesheet">
-        <link href="footer.css" rel="stylesheet">
 
-    </head>
+    <?php include("includes/head.php"); ?>
 
     <body>
         <!--header starts-->
@@ -50,7 +37,7 @@ if (empty($_SESSION["user_id"])) {
         <!-- header end -->
 
         <div class="site-wrapper">
-            
+
 
             <div class="page-wrapper">
                 <div class="top-links">
@@ -145,7 +132,7 @@ if (empty($_SESSION["user_id"])) {
         </div>
         <!-- end:page wrapper -->
         </div>
-        
+
         <!-- FOOTER SECTION ----------------------- -->
         <?php include("includes/footer.php"); ?>
         <!-- FOOTER SECTION END----------------- -->

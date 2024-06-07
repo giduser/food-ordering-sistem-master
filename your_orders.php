@@ -10,127 +10,111 @@ if (empty($_SESSION['user_id'])) {
 } else {
 ?>
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <link rel="icon" href="#">
-        <title>My Orders</title>
-        <!-- Bootstrap core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/animsition.min.css" rel="stylesheet">
-        <link href="css/animate.css" rel="stylesheet">
-        <!-- Custom styles for this template -->
-        <link href="css/style.css" rel="stylesheet">
-        <link href="footer.css" rel="stylesheet">
+    <?php include('includes/head.php'); ?>
+    <style type="text/css" rel="stylesheet">
+        .indent-small {
+            margin-left: 5px;
+        }
 
-        <style type="text/css" rel="stylesheet">
-            .indent-small {
-                margin-left: 5px;
-            }
+        .form-group.internal {
+            margin-bottom: 0;
+        }
 
-            .form-group.internal {
-                margin-bottom: 0;
-            }
+        .dialog-panel {
+            margin: 10px;
+        }
 
-            .dialog-panel {
-                margin: 10px;
-            }
+        .datepicker-dropdown {
+            z-index: 200 !important;
+        }
 
-            .datepicker-dropdown {
-                z-index: 200 !important;
-            }
+        label.control-label {
+            font-weight: 600;
+            color: #777;
+        }
 
-            label.control-label {
-                font-weight: 600;
-                color: #777;
-            }
+        .navbar {
+            background-color: darkslategrey;
+            /* Warna hijau */
+        }
 
-            .navbar {
-                background-color: darkslategrey;
-                /* Warna hijau */
-            }
+        table {
+            width: 750px;
+            border-collapse: collapse;
+            margin: auto;
+
+        }
+
+        tr:nth-of-type(odd) {
+            background: #eee;
+        }
+
+        th {
+            background: rgb(0, 128, 0);
+            color: white;
+            font-weight: bold;
+
+        }
+
+        td,
+        th {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+            font-size: 14px;
+
+        }
+
+        @media only screen and (max-width: 760px),
+        (min-device-width: 768px) and (max-device-width: 1024px) {
 
             table {
-                width: 750px;
-                border-collapse: collapse;
-                margin: auto;
-
+                width: 100%;
             }
 
-            tr:nth-of-type(odd) {
-                background: #eee;
-            }
-
-            th {
-                background: rgb(0, 128, 0);
-                color: white;
-                font-weight: bold;
-
-            }
-
+            table,
+            thead,
+            tbody,
+            th,
             td,
-            th {
-                padding: 10px;
+            tr {
+                display: block;
+            }
+
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
                 border: 1px solid #ccc;
-                text-align: left;
-                font-size: 14px;
-
             }
 
-            @media only screen and (max-width: 760px),
-            (min-device-width: 768px) and (max-device-width: 1024px) {
-
-                table {
-                    width: 100%;
-                }
-
-                table,
-                thead,
-                tbody,
-                th,
-                td,
-                tr {
-                    display: block;
-                }
-
-                thead tr {
-                    position: absolute;
-                    top: -9999px;
-                    left: -9999px;
-                }
-
-                tr {
-                    border: 1px solid #ccc;
-                }
-
-                td {
-                    border: none;
-                    border-bottom: 1px solid #eee;
-                    position: relative;
-                    padding-left: 50%;
-                }
-
-                td:before {
-                    position: absolute;
-                    top: 6px;
-                    left: 6px;
-                    width: 45%;
-                    padding-right: 10px;
-                    white-space: nowrap;
-                    content: attr(data-column);
-
-                    color: #000;
-                    font-weight: bold;
-                }
-
+            td {
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 50%;
             }
-        </style>
 
-    </head>
+            td:before {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                content: attr(data-column);
+
+                color: #000;
+                font-weight: bold;
+            }
+
+        }
+    </style>
+
+
 
     <body>
 
@@ -227,7 +211,7 @@ if (empty($_SESSION['user_id'])) {
                                                                 <i class="fa fa-trash-o" style="font-size:16px"></i>
                                                             </a>
 
-                                                            ?>
+
                                                         </td>
 
 
