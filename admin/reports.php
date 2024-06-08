@@ -189,18 +189,32 @@ if (isset($_POST['filter'])) {
                 $sql = "SELECT * FROM users_orders WHERE date BETWEEN '$start_date' AND '$end_date'";
                 $result = mysqli_query($db, $sql);
 
+                $total_quantity = 0;
+                $total_price = 0;
+
                 if (mysqli_num_rows($result) > 0) {
                     // Output data of each row
                     while ($row = mysqli_fetch_assoc($result)) {
+                        $row_total_price = $row["price"] * $row["quantity"];
+                        $total_quantity += $row["quantity"];
+                        $total_price += $row_total_price;
                         echo "<tr>
-                            <td>" . $row["o_id"] . "</td>
-                            <td>" . $row["u_id"] . "</td>
-                            <td>" . $row["title"] . "</td>
-                            <td>" . $row["quantity"] . "</td>
-                            <td>" . $row["price"] . "</td>
-                            <td>" . $row["date"] . "</td>
-                          </tr>";
+                <td>" . $row["o_id"] . "</td>
+                <td>" . $row["u_id"] . "</td>
+                <td>" . $row["title"] . "</td>
+                <td>" . $row["quantity"] . "</td>
+                <td>Rp. " . number_format($row_total_price, 0, ',', '.') . "</td>
+                <td>" . $row["date"] . "</td>
+              </tr>";
                     }
+
+                    // Output total quantity and total price
+                    echo "<tr>
+            <td colspan='3'><strong>Total</strong></td>
+            <td><strong>" . $total_quantity . "</strong></td>
+            <td><strong>Rp. " . number_format($total_price, 0, ',', '.') . "</strong></td>
+            <td></td>
+          </tr>";
                 } else {
                     echo "<tr><td colspan='6'>No sales data available for selected date range</td></tr>";
                 }
@@ -209,6 +223,9 @@ if (isset($_POST['filter'])) {
                 mysqli_close($db);
             }
             ?>
+
+
+
         </tbody>
     </table>
     <?php if (isset($_POST['filter']) && mysqli_num_rows($result) > 0) : ?>

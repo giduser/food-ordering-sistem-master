@@ -21,7 +21,7 @@ if (empty($_SESSION["adm_id"])) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
         <!-- Favicon icon -->
 
-        <title>Angkring Dashboard</title>
+        <title>Admin Dashboard</title>
         <!-- Bootstrap Core CSS -->
         <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
         <!-- Custom CSS -->

@@ -4,7 +4,10 @@
     <nav class="navbar navbar-dark">
         <div class="container">
             <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">&#9776;</button>
-            <a class="navbar-brand" href="index.php">Cah Bagus</a>
+            <a class="navbar-brand" href="index.php">
+                <img src="images/cah bagus-fotor-20240607111022.png" alt="Icon" style="width: 48px; height: 48px; margin-right: 8px;">
+                Cah Bagus
+            </a>
 
 
             <div class="collapse navbar-toggleable-md float-lg-right" id="mainNavbarCollapse">
