@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2024 at 07:38 AM
+-- Generation Time: Aug 04, 2024 at 05:02 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -89,16 +89,16 @@ CREATE TABLE `dishes` (
 --
 
 INSERT INTO `dishes` (`d_id`, `rs_id`, `title`, `slogan`, `price`, `img`, `rating`, `num_reviews`) VALUES
-(22, 56, 'Ayam Bakar', 'enak dan mengenyangkan', 25000.00, 'ayamBakar.jfif', 5.00, 1),
-(23, 58, 'Ikan Bakar', 'ikan segar yang rasanya nikmat', 20000.00, 'ikanBakar.jpg', 4.00, 1),
-(24, 60, 'Sop Iga', 'sop yang segar dengan porsi kumbo', 38000.00, 'sopIga.jpg', 4.00, 1),
-(25, 57, 'Ayam Goreng', 'Ayam segar yang digoreng diminyak kelapa dan ditambah kremesan', 25000.00, 'ayamGoreng.jpeg', 0.00, 0),
-(26, 59, 'Ikan Goreng', 'ikan yg digoreng dengan minyak kelapa dan dimarinasi dengan bumbu rahasia', 20000.00, 'ikanGoreng.jpg', 0.00, 0),
-(27, 61, 'Sop Ayam', 'sop ayam yang segar dan enak dengan sayuran segar ', 15000.00, 'sopAyam.jpg', 0.00, 0),
-(28, 62, 'Lalapan', 'lalapan untuk menemani menu utama anda', 10000.00, 'Lalapan.jpg', 0.00, 0),
-(29, 63, 'Air Mineral', 'air putih yang sehat dan menyegarkan', 5000.00, 'airMineral.jfif', 0.00, 0),
-(30, 64, 'Es Buah', 'minuman segar dengan buah segar dengan rasa manis', 15000.00, 'esBuah.jpg', 0.00, 0),
-(31, 65, 'Es Jeruk', 'minuman segar dengan jerus asli tanpa pemanis buatan', 10000.00, 'esJeruk.jpg', 0.00, 0);
+(22, 56, 'Ayam Bakar', 'enak dan mengenyangkan', 25000.00, 'ayamBakar.jfif', 4.83, 6),
+(23, 58, 'Ikan Bakar', 'ikan segar yang rasanya nikmat', 20000.00, 'ikanBakar.jpg', 4.00, 2),
+(24, 60, 'Sop Iga', 'sop yang segar dengan porsi kumbo', 38000.00, 'sopIga.jpg', 4.00, 2),
+(25, 57, 'Ayam Goreng', 'Ayam segar yang digoreng diminyak kelapa dan ditambah kremesan', 25000.00, 'ayamGoreng.jpeg', 3.50, 2),
+(26, 59, 'Ikan Goreng', 'ikan yg digoreng dengan minyak kelapa dan dimarinasi dengan bumbu rahasia', 20000.00, 'ikanGoreng.jpg', 4.00, 1),
+(27, 61, 'Sop Ayam', 'sop ayam yang segar dan enak dengan sayuran segar ', 15000.00, 'sopAyam.jpg', 5.00, 1),
+(28, 62, 'Lalapan', 'lalapan untuk menemani menu utama anda', 10000.00, 'Lalapan.jpg', 5.00, 1),
+(29, 63, 'Air Mineral', 'air putih yang sehat dan menyegarkan', 5000.00, 'airMineral.jfif', 3.00, 1),
+(30, 64, 'Es Buah', 'minuman segar dengan buah segar dengan rasa manis', 15000.00, 'esBuah.jpg', 3.00, 1),
+(31, 65, 'Es Jeruk', 'minuman segar dengan jerus asli tanpa pemanis buatan', 10000.00, 'esJeruk.jpg', 5.00, 1);
 
 -- --------------------------------------------------------
 
@@ -150,6 +150,8 @@ CREATE TABLE `restaurant` (
   `title` varchar(222) NOT NULL,
   `description` text NOT NULL,
   `image` text NOT NULL,
+  `rating` decimal(3,2) NOT NULL,
+  `num_reviews` int(11) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -157,17 +159,17 @@ CREATE TABLE `restaurant` (
 -- Dumping data for table `restaurant`
 --
 
-INSERT INTO `restaurant` (`rs_id`, `c_id`, `title`, `description`, `image`, `date`) VALUES
-(56, 8, 'Ayam Bakar', 'Ayam segar yang dibakar dengan arang kelapa dan bumbu rahasia', 'ayamBakar.jfif', '2024-06-07 04:46:16'),
-(57, 8, 'Ayam Goreng', 'Ayam segar yang digoreng diminyak kelapa dan ditambah kremesan', 'ayamGoreng.jpeg', '2024-06-07 05:25:49'),
-(58, 11, 'Ikan Bakar', 'Ikan segar yang dibakar dan diberi bumbu spesial', 'ikanBakar.jpg', '2024-06-07 04:49:17'),
-(59, 11, 'Ikan Goreng', 'ikan yg digoreng dengan minyak kelapa dan dimarinasi dengan bumbu rahasia', 'ikanGoreng.jpg', '2024-06-07 05:26:16'),
-(60, 12, 'Sop Iga', 'sop iga sapi yang segar dan enak cocok ditemani dengan nasi hangat', 'sopIga.jpg', '2024-06-07 04:52:07'),
-(61, 12, 'Sop Ayam', 'sop ayam yang segar dan enak dengan sayuran segar ', 'sopAyam.jpg', '2024-06-07 04:55:18'),
-(62, 13, 'Lalapan', 'lalapan untuk menemani menu utama anda', 'Lalapan.jpg', '2024-06-07 04:55:18'),
-(63, 17, 'Air Mineral', 'air putih yang sehat dan menyegarkan', 'airMineral.jfif', '2024-06-07 04:57:27'),
-(64, 17, 'Es Buah', 'minuman segar dengan buah segar dengan rasa manis', 'esBuah.jpg', '2024-06-07 04:57:27'),
-(65, 17, 'Es Jeruk', 'minuman segar dengan jerus asli tanpa pemanis buatan', 'esJeruk.jpg', '2024-06-07 04:58:14');
+INSERT INTO `restaurant` (`rs_id`, `c_id`, `title`, `description`, `image`, `rating`, `num_reviews`, `date`) VALUES
+(56, 8, 'Ayam Bakar', 'Ayam segar yang dibakar dengan arang kelapa dan bumbu rahasia', 'ayamBakar.jfif', 4.83, 6, '2024-06-12 18:24:20'),
+(57, 8, 'Ayam Goreng', 'Ayam segar yang digoreng diminyak kelapa dan ditambah kremesan', 'ayamGoreng.jpeg', 3.50, 2, '2024-06-13 01:26:32'),
+(58, 11, 'Ikan Bakar', 'Ikan segar yang dibakar dan diberi bumbu spesial', 'ikanBakar.jpg', 4.00, 2, '2024-06-12 18:26:50'),
+(59, 11, 'Ikan Goreng', 'ikan yg digoreng dengan minyak kelapa dan dimarinasi dengan bumbu rahasia', 'ikanGoreng.jpg', 4.00, 1, '2024-06-12 18:27:33'),
+(60, 12, 'Sop Iga', 'sop iga sapi yang segar dan enak cocok ditemani dengan nasi hangat', 'sopIga.jpg', 4.00, 2, '2024-06-12 18:27:13'),
+(61, 12, 'Sop Ayam', 'sop ayam yang segar dan enak dengan sayuran segar ', 'sopAyam.jpg', 5.00, 1, '2024-06-12 18:27:23'),
+(62, 13, 'Lalapan', 'lalapan untuk menemani menu utama anda', 'Lalapan.jpg', 5.00, 1, '2024-06-12 18:27:58'),
+(63, 17, 'Air Mineral', 'air putih yang sehat dan menyegarkan', 'airMineral.jfif', 3.00, 1, '2024-06-12 18:27:47'),
+(64, 17, 'Es Buah', 'minuman segar dengan buah segar dengan rasa manis', 'esBuah.jpg', 3.00, 1, '2024-06-12 18:28:15'),
+(65, 17, 'Es Jeruk', 'minuman segar dengan jerus asli tanpa pemanis buatan', 'esJeruk.jpg', 5.00, 1, '2024-06-12 18:28:07');
 
 -- --------------------------------------------------------
 
@@ -200,6 +202,7 @@ INSERT INTO `res_category` (`c_id`, `c_name`, `date`) VALUES
 
 CREATE TABLE `reviews` (
   `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `rating` int(11) NOT NULL,
@@ -212,10 +215,25 @@ CREATE TABLE `reviews` (
 -- Dumping data for table `reviews`
 --
 
-INSERT INTO `reviews` (`id`, `name`, `email`, `rating`, `review`, `created_at`, `dish_id`) VALUES
-(32, 'admin 123', 'admin123@gmail.com', 5, 'enak banget', '2024-06-07 05:42:19', 22),
-(33, 'admin 123', 'admin123@gmail.com', 4, 'Resto lesehan konsep garden classic yang asik dan lengkap menunya untuk keluarga.\r\nAneka olahan ayam, nasi, sayur, ikan , dan minuman yang komplit.', '2024-06-07 09:30:37', 23),
-(34, 'admin 123', 'admin123@gmail.com', 4, 'Kesini karena lewat dan kelihatannya menarik. Pesan beberapa menu yang ternyata perlu dikonfirmasi dulu ke orang dapur kalau stoknya masih ada atau ga ada hehe.\r\nAkhirnya pesan:\r\n1. Cah kangkung / Tumis Kangkung â­4/5\r\nRasanya standar, ga terlalu istimewa, kangkungnya  bagian batang masih agak keras.\r\n2. Sup ikan â­4.5/5\r\nIni enak, asam segar, porsi cukup untuk 2-3 orang. Ikannya matang dengan baik dan bersih\r\n3. Ikan bakar â­4.5/5\r\nLupa pesan ikan apa karena beberapa kali dikonfirmasi ikan yang diinginkan ga ada hehe. Terus ganti ke ikan lain. Bumbunya lumayan oke.\r\n\r\nNilai plus selain menu karena toiletnya lumayan bersih, ada mushola dan tempatnya cukup terang.\r\nSayangnya, kurang koordinasi antara pelayan dengan bagian dapur, jadi untuk menu perlu konfirmasi bolak balik antara pelayan dan bagian dapur. Kedepannya mungkin bisa lebih ditingkatkan pelayanannya.\r\n\r\nOhiya, akan ada yang nawarin makanan tahu walik, lumayan enak, cuma harganya cukup mahal, padahal menu lain harganya cenderung affordable hehe.', '2024-06-07 09:32:30', 24);
+INSERT INTO `reviews` (`id`, `user_id`, `name`, `email`, `rating`, `review`, `created_at`, `dish_id`) VALUES
+(32, 0, 'admin 123', 'admin123@gmail.com', 5, 'enak banget', '2024-06-07 05:42:19', 22),
+(33, 0, 'admin 123', 'admin123@gmail.com', 4, 'Resto lesehan konsep garden classic yang asik dan lengkap menunya untuk keluarga.\r\nAneka olahan ayam, nasi, sayur, ikan , dan minuman yang komplit.', '2024-06-07 09:30:37', 23),
+(34, 0, 'admin 123', 'admin123@gmail.com', 4, 'Kesini karena lewat dan kelihatannya menarik. Pesan beberapa menu yang ternyata perlu dikonfirmasi dulu ke orang dapur kalau stoknya masih ada atau ga ada hehe.\r\nAkhirnya pesan:\r\n1. Cah kangkung / Tumis Kangkung â­4/5\r\nRasanya standar, ga terlalu istimewa, kangkungnya  bagian batang masih agak keras.\r\n2. Sup ikan â­4.5/5\r\nIni enak, asam segar, porsi cukup untuk 2-3 orang. Ikannya matang dengan baik dan bersih\r\n3. Ikan bakar â­4.5/5\r\nLupa pesan ikan apa karena beberapa kali dikonfirmasi ikan yang diinginkan ga ada hehe. Terus ganti ke ikan lain. Bumbunya lumayan oke.\r\n\r\nNilai plus selain menu karena toiletnya lumayan bersih, ada mushola dan tempatnya cukup terang.\r\nSayangnya, kurang koordinasi antara pelayan dengan bagian dapur, jadi untuk menu perlu konfirmasi bolak balik antara pelayan dan bagian dapur. Kedepannya mungkin bisa lebih ditingkatkan pelayanannya.\r\n\r\nOhiya, akan ada yang nawarin makanan tahu walik, lumayan enak, cuma harganya cukup mahal, padahal menu lain harganya cenderung affordable hehe.', '2024-06-07 09:32:30', 24),
+(43, 37, 'admin 123', 'admin123@gmail.com', 5, 'iuivi', '2024-06-12 16:59:35', 22),
+(44, 37, 'admin 123', 'admin123@gmail.com', 4, 'iycviciy', '2024-06-12 16:59:52', 22),
+(45, 37, 'admin 123', 'admin123@gmail.com', 5, 'wefwf', '2024-06-12 17:35:36', 22),
+(46, 0, 'admin 123', 'admin123@gmail.com', 5, 'dsdfadf', '2024-06-12 18:23:53', 22),
+(47, 0, 'admin 123', 'admin123@gmail.com', 5, 'dsdfadf', '2024-06-12 18:24:20', 22),
+(48, 0, 'admin 123', 'admin123@gmail.com', 4, 'dsfd', '2024-06-12 18:26:50', 23),
+(49, 0, 'admin 123', 'admin123@gmail.com', 5, 'adsdasd', '2024-06-12 18:27:05', 25),
+(50, 0, 'admin 123', 'admin123@gmail.com', 4, 'dasdasda', '2024-06-12 18:27:13', 24),
+(51, 0, 'admin 123', 'admin123@gmail.com', 5, 'dfwgad', '2024-06-12 18:27:23', 27),
+(52, 0, 'admin 123', 'admin123@gmail.com', 4, 'sdfadfa', '2024-06-12 18:27:33', 26),
+(53, 0, 'admin 123', 'admin123@gmail.com', 3, 'dfafsdf', '2024-06-12 18:27:47', 29),
+(54, 0, 'admin 123', 'admin123@gmail.com', 5, 'sdfadfa', '2024-06-12 18:27:58', 28),
+(55, 0, 'admin 123', 'admin123@gmail.com', 5, 'adfgasgag', '2024-06-12 18:28:07', 31),
+(56, 0, 'admin 123', 'admin123@gmail.com', 3, 'asdfasdga', '2024-06-12 18:28:15', 30),
+(57, 0, 'admin 123', 'admin123@gmail.com', 2, 'weqweqe', '2024-06-13 01:26:32', 25);
 
 -- --------------------------------------------------------
 
@@ -272,7 +290,20 @@ INSERT INTO `users_orders` (`o_id`, `u_id`, `title`, `quantity`, `price`, `statu
 (63, 37, 'Ayam Bakar', 13, 25000.00, NULL, '2024-06-07 06:17:40'),
 (64, 37, 'Ayam Bakar', 13, 25000.00, NULL, '2024-06-07 06:18:22'),
 (65, 37, 'Ikan Bakar', 13, 20000.00, NULL, '2024-06-07 06:18:49'),
-(66, 37, 'Ikan Bakar', 13, 20000.00, NULL, '2024-06-07 09:34:38');
+(66, 37, 'Ikan Bakar', 13, 20000.00, NULL, '2024-06-07 09:34:38'),
+(67, 37, 'Ayam Bakar', 1, 25000.00, NULL, '2024-08-03 02:05:43');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_preferences`
+--
+
+CREATE TABLE `user_preferences` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `c_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -334,6 +365,14 @@ ALTER TABLE `users_orders`
   ADD PRIMARY KEY (`o_id`);
 
 --
+-- Indexes for table `user_preferences`
+--
+ALTER TABLE `user_preferences`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user_category_unique` (`user_id`,`c_id`),
+  ADD KEY `fk_c_id` (`c_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -377,7 +416,7 @@ ALTER TABLE `res_category`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -389,7 +428,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_orders`
 --
 ALTER TABLE `users_orders`
-  MODIFY `o_id` int(222) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `o_id` int(222) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+
+--
+-- AUTO_INCREMENT for table `user_preferences`
+--
+ALTER TABLE `user_preferences`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -400,6 +445,13 @@ ALTER TABLE `users_orders`
 --
 ALTER TABLE `reviews`
   ADD CONSTRAINT `fk_reviews_dishes` FOREIGN KEY (`dish_id`) REFERENCES `dishes` (`d_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `user_preferences`
+--
+ALTER TABLE `user_preferences`
+  ADD CONSTRAINT `fk_c_id` FOREIGN KEY (`c_id`) REFERENCES `res_category` (`c_id`),
+  ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`u_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
